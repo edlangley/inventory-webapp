@@ -6,13 +6,13 @@
 	<!--
 	//validate the entry form
 	function checkForm()
-    {
-    	if(categoryform.cat_name.value.length == 0)
-        {
-        	alert("Please enter a Category Name");
-            return false;
-        }
-    }
+	{
+    		if(categoryform.cat_name.value.length == 0)
+        	{
+        		alert("Please enter a Category Name");
+        		return false;
+        	}
+	}
     // -->
 </script>
 </head>

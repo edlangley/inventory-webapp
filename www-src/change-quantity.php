@@ -11,14 +11,16 @@
 <hr>
 <?php
     $item_id = $_GET["item_id"];
-    $deleteitemquery = "DELETE FROM item WHERE id = '".$item_id."';";
-    if(mysql_query($deleteitemquery, $conn))
+    $new_quantity = $_GET["quantity"];
+    $changequantityquery = "UPDATE item SET quantity = '".$new_quantity."' WHERE id = '"
+    .$item_id."';";
+    if(mysql_query($changequantityquery, $conn))
     {
-    	echo "Item successfully deleted.";
+    	echo "Item quantity successfully changed.";
     }
     else
     {
-    	echo "Error, item was not deleted.";
+    	echo "Error, item quantity not changed.";
     }
     echo "<br><a href='view-items.php'>Back to item list</a>";
 ?>

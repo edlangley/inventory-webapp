@@ -7,7 +7,7 @@
 	include("admin-auth.php");
     // database is now selected and connected - index is $conn
 ?>
-<h1>Eds Classifieds</h1>
+<h1>Eds Electronics Inventory</h1>
 <hr>
 <?php
     $item_id = $_GET["item_id"];
@@ -23,7 +23,7 @@
     {
     	echo "Error, item was not moved.";
     }
-    echo "<br><a href='view-items.php'>Back to advert list</a>";
+    echo "<br><a href='view-items.php'>Back to item list</a>";
 ?>
 </body>
 </html>

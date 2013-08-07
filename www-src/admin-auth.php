@@ -11,7 +11,7 @@
 	else
 	{
 		$conn = mysql_connect("localhost", "mysqluser", "mysqlpass");
-		mysql_select_db("exchange_and_mart", $conn) or die(mysql_error());
+		mysql_select_db("electronics", $conn) or die(mysql_error());
 		$sqlquery = "SELECT * FROM admin_users";
 		$result = mysql_query($sqlquery, $conn) or die(mysql_error());
 		$access_granted = 0;

@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<h1>Eds Classifieds</h1>
+<h1>Eds Electronics Inventory</h1>
 <hr>
 <script language="JavaScript">
 <!--
@@ -28,55 +28,28 @@
 <br>
 <?php
 	include("admin-auth.php");
-    // database is now selected and connected - index is $conn
+	// database is now selected and connected - index is $conn
 
-    //verify seller username and password:
-    $sellerquery = "SELECT * FROM seller WHERE user_name = '".$_GET["user_name"].
-    "' AND password = '".$_GET["password"]."'";
-    $seller_list = mysql_query($sellerquery, $conn);// or die(mysql_error());
-    $num_rows = mysql_num_rows($seller_list);
-    //echo "num rows $num_rows";
-	if(mysql_num_rows($seller_list) == 0)
-    {
-        echo "Invalid Seller username and/or password<br>";
-        echo "<input type='submit' value = 'Make Changes'/>";
-		exit;
-    }
-    else
-    {
-        $seller_row = mysql_fetch_array($seller_list);
-        $seller_id = $seller_row["id"];
-    }
-    //add the item to the db
-    $name = $_GET["name"];
-    $description = $_GET["description"];
-    $price = $_GET["price"];
-    $cat_id = $_GET["cat_id"];
-    // sort out date string
-    $date_array = getdate();
-    $entry_date = $date_array["year"];
-    $entry_date .= "-".$date_array["mon"];
-    $entry_date .= "-".$date_array["mday"];
-    $entry_date .= " ".$date_array["hours"];
-    $entry_date .= ":".$date_array["minutes"];
-    $entry_date .= ":".$date_array["seconds"];
+    
+	//add the item to the db
+	$name = $_GET["name"];
+	$description = $_GET["description"];
+	$quantity = $_GET["quantity"];
+	$cat_id = $_GET["cat_id"];
 
-    //$entry_date = $_GET["entry_date"];
+	$itemquery = "INSERT INTO item (name, extra_desc, quantity, cat_id)
+	 VALUES ('$name','$description','$quantity','$cat_id')";
 
-    $itemquery = "INSERT INTO item (name, description, price, cat_id,
-    entry_date, seller_id) VALUES ('$name','$description','$price','$cat_id',
-    '$entry_date', '$seller_id')";
-
-    if(mysql_query($itemquery, $conn))
-    {
-    	echo "Item successfully added to the database";
-        echo "<br><a href='view-items.php'>View adverts</a>";
-    }
-    else
-    {
-    	echo "Error, item was not added";
-        echo "<input type='submit' value = 'Go Back'/>";
-    }
+	if(mysql_query($itemquery, $conn))
+	{
+		echo "Item successfully added to the database";
+		echo "<br><a href='view-items.php'>View items</a>";
+	}
+	else
+	{
+		echo "Error, item was not added";
+		echo "<input type='submit' value = 'Go Back'/>";
+	}
 
 
 ?>
