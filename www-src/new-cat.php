@@ -3,7 +3,7 @@
 <head>
   <title></title>
 <script language="JavaScript">
-	<!--
+<!--
 	//validate the entry form
 	function checkForm()
 	{
@@ -13,17 +13,18 @@
         		return false;
         	}
 	}
-    // -->
+// -->
 </script>
 </head>
 
 <body>
-<h1>Eds Classifieds</h1>
-<hr>
 <?php
-    include("admin-auth.php");
-    // database is now selected and connected - index is $conn
+	include("site_title.php");
+	include("admin-auth.php");
+	// database is now selected and connected - index is $conn
 ?>
+<h1><?php echo $site_title; ?></h1>
+<hr>
 <form name="categoryform" action="add-cat.php" method="get" onsubmit="return checkForm()">
 <table>
 <tr><td>Category name:</td><td><input type="text" name="cat_name" /></td></tr>

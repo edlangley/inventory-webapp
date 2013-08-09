@@ -1,6 +1,5 @@
 <?php
-
-    // login as a user from admin_user list table in the db
+	// login as a user from admin_user list table in the db
 	if (!isset($_SERVER['PHP_AUTH_USER']))
 	{
       		header('WWW-Authenticate: Basic realm="Administrator"');
@@ -31,6 +30,4 @@
 			exit;
 		}
 	}
-
-
 ?>

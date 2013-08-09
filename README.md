@@ -6,9 +6,9 @@ categories with a description.
 
 Overview
 --------
-This code started life as an assignment for a little web technologies
-module I did at uni to produce an administration back end for a
-classified adverts website. 
+This code started life as an assignment to produce an administration
+back end for a classified adverts website, during a web technologies
+module I did at university. 
 
 Several years after originally writing this code, I decided I needed
 something to keep a record of what electronics components I had stored
@@ -61,16 +61,18 @@ Check the database is loaded properly and accessible:
 That last command will also tell you the default user name and
 password to log in to the site :-)
 
-Lastly, add or remove admin users as desired:
+Add or remove admin users as desired:
 
 	mysql> INSERT INTO admin_users (user_name,password) VALUES ('newadminuser','newpassword');
 	mysql> DELETE FROM admin_users WHERE user_name='bob';
 
+Lastly, the title of the site displayed on most pages can be changed
+by editing site_title.php.
 
 Usage
 -----
 Browse to index.php, enter a username and password from the admin_users
-table. After successful login you will see a table with adverts in it.
+table. After successful login you will see a table with the items in it.
 From there, use of the site is all fairly self explanatory.
 
 

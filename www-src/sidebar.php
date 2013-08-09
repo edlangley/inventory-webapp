@@ -5,7 +5,10 @@
 </head>
 
 <body>
-<B>Eds Electronics Inventory</B><BR>
+<?php
+	include("site_title.php");
+?>
+<B><?php echo $site_title; ?></B><BR>
 <BR>
 <HR>
 <a href="view-items.php" target="main">View items</a><br>

@@ -6,7 +6,12 @@
 </head>
 
 <body>
-<h1>Eds Electronics Inventory</h1>
+<?php
+	include("site_title.php");
+	include("admin-auth.php");
+	// database is now selected and connected - index is $conn
+?>
+<h1><?php echo $site_title; ?></h1>
 <hr>
 <script language="JavaScript">
 <!--

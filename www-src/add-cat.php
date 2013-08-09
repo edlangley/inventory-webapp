@@ -5,11 +5,14 @@
 </head>
 
 <body>
-<h1>Eds Classifieds</h1>
-<hr>
 <?php
+	include("site_title.php");
 	include("admin-auth.php");
 	// database is now selected and connected - index is $conn
+?>
+<h1><?php echo $site_title; ?></h1>
+<hr>
+<?php
 	$catquery = "INSERT INTO category (cat_name) VALUES ('".$_GET["cat_name"]."');";
 	if(mysql_query($catquery, $conn))
 	{
