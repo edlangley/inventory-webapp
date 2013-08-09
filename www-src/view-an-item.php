@@ -1,13 +1,14 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-
 <head>
-  <title></title>
+<meta name="generator" content=
+"HTML Tidy for Linux/x86 (vers 25 March 2009), see www.w3.org">
+<title></title>
 </head>
-
 <body>
 <?php
-	include("site_title.php");
-	include("admin-auth.php");
+        include("site_title.php");
+        include("admin-auth.php");
     // database is now selected and connected - index is $conn
 ?>
 <h1><?php echo $site_title; ?></h1>
@@ -18,7 +19,7 @@
     $item_list = mysql_query($itemquery, $conn) or die(mysql_error());
     if(mysql_num_rows($item_list) > 0)
     {
-    	$item_row = mysql_fetch_array($item_list);
+        $item_row = mysql_fetch_array($item_list);
         echo "<table>";
         echo "<tr><td>Item ID:</td><td>".$item_row["id"]."</td></tr>";
         echo "<tr><td>Item name:</td><td>".$item_row["name"]."</td></tr>";
@@ -37,11 +38,9 @@
     }
     else
     {
-    	echo "Error, item not found<br>";
+        echo "Error, item not found<br>";
     }
     echo "<a href='view-items.php'>Back to item list</a>";
 ?>
-
 </body>
-
 </html>
