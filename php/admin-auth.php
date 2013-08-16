@@ -9,7 +9,17 @@
         }
         else
         {
-                $conn = mysql_connect("localhost", "mysqluser", "mysqlpass");
+                if(isset($_ENV["OPENSHIFT_MYSQL_DB_HOST"]))
+                {
+                        // Assume all the other OpenShift environment variables are set as well:
+                        $conn = mysql_connect($_ENV["OPENSHIFT_MYSQL_DB_HOST"].':'.$_ENV["OPENSHIFT_MYSQL_DB_PORT"],
+                                              $_ENV["OPENSHIFT_MYSQL_DB_USERNAME"],
+                                              $_ENV["OPENSHIFT_MYSQL_DB_PASSWORD"]) or die(mysql_error());
+                }
+                else
+                {
+                        $conn = mysql_connect("localhost", "mysqluser", "mysqlpass") or die(mysql_error());
+                }
                 mysql_select_db("electronics", $conn) or die(mysql_error());
                 $sqlquery = "SELECT * FROM admin_users";
                 $result = mysql_query($sqlquery, $conn) or die(mysql_error());
