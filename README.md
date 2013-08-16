@@ -37,6 +37,12 @@ database requires that a MySQL user 'mysqluser' with password
 Alternatively, edit the file admin-auth.php with an appropriate
 username and password to suit your MySQL installation.
 
+*Note*: I'm using this application on OpenShift, which is all very
+cloudy and fashionable at the moment. So there is a check to see
+if the `OPENSHIFT_MYSQL_DB_HOST` environment variable is set, if so
+the other standard OpenShift MySQL env vars are instead used to
+connect to the DB.
+
 admin-auth.php connects to a database called "electronics". You can
 change the database name, if you want to inventorise
 something else. Just change the name passed to the `mysql_select_db`
