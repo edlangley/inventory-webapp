@@ -21,7 +21,7 @@ You will need a web server which can use PHP (Such as Apache) as well
 as PHP itself and MySQL installed and configured correctly. This code
 is tested with Apache 2.2.22, PHP 5.3.10, and MySQL 5.5.31.
 
-Depending upon your system, copy the PHP files in www-src/ to a
+Depending upon your system, copy the PHP files in php/ to a
 location served up by your web server.
 
 As an example, the location could be: /var/www/inventory/
