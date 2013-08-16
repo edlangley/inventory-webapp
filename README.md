@@ -21,15 +21,10 @@ You will need a web server which can use PHP (Such as Apache) as well
 as PHP itself and MySQL installed and configured correctly. This code
 is tested with Apache 2.2.22, PHP 5.3.10, and MySQL 5.5.31.
 
-Depending upon your system, copy the PHP and HTML files in www-src/ 
-to a location served up by your web server, and the MySQL database
-directory electronics in sql-db-sample/ to the MySQL databases
-directory on your system.
+Depending upon your system, copy the PHP files in www-src/ to a
+location served up by your web server.
 
-As an example, the locations could be:
-
-PHP code: /var/www/inventory/
-SQL files: /var/lib/mysql/electronics/
+As an example, the location could be: /var/www/inventory/
 
 Currently, the header admin-auth.php which connects to the MySQL
 database requires that a MySQL user 'mysqluser' with password
@@ -38,18 +33,26 @@ database requires that a MySQL user 'mysqluser' with password
 	$ mysql -u root -p <currentpasswd>
 	mysql> CREATE USER 'mysqluser'@'localhost';
 	mysql> SET PASSWORD FOR 'mysqluser'@'localhost' = PASSWORD('mysqlpass');
-	mysql> GRANT ALL ON electronics.* TO 'mysqluser'@'localhost';
-	mysql> exit
 
 Alternatively, edit the file admin-auth.php with an appropriate
 username and password to suit your MySQL installation.
 
-You can changes the database name too, if you want to inventorise
-something else. Just change the directory name which is copied to
-the mysql data directory, and refer to the different name in the above
-commands.
-Remember to also change the name passed to the mysql_select_db call in
-admin-auth.php.
+admin-auth.php connects to a database called "electronics". You can
+change the database name, if you want to inventorise
+something else. Just change the name passed to the `mysql_select_db`
+call in admin-auth.php, and use that database name instead in the
+following commands.
+
+Create a MySQL database called electronics on the system:
+
+	# mysql -u root
+	mysql> CREATE DATABASE electronics;
+	mysql> GRANT ALL ON electronics.* TO 'mysqluser'@'localhost';
+	mysql> exit
+	
+Then import the MySQL dump in sql-db-sample/ to that MySQL database.
+
+	# mysql -u root electronics < /path/to/electronics.sql
 
 Check the database is loaded properly and accessible:
 
@@ -65,6 +68,10 @@ Add or remove admin users as desired:
 
 	mysql> INSERT INTO admin_users (user_name,password) VALUES ('newadminuser','newpassword');
 	mysql> DELETE FROM admin_users WHERE user_name='bob';
+
+These MySQL operations could be done in say, PHPMyAdmin. If so,
+create the database first and make sure it is selected on the left
+hand sidebar, then import the .sql file.
 
 Lastly, the title of the site displayed on most pages can be changed
 by editing site_title.php.
