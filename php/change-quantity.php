@@ -28,7 +28,8 @@
                     {
                         echo "Error, item quantity not changed.";
                     }
-                    echo "<br><a href='view-items.php'>Back to item list</a>";
+                    echo "<br><br>";
+                    include("view-items-category-form.php");
                 ?>
         </body>
 </html>

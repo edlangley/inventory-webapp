@@ -20,7 +20,8 @@
                         if(mysql_query($catquery, $conn))
                         {
                                 echo "Category successfully added";
-                                echo "<br><a href='view-items.php'>View items</a>";
+                                echo "<br><br>";
+                                include("view-items-category-form.php");
                         }
                         else
                         {

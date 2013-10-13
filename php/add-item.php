@@ -37,7 +37,6 @@
                         include("admin-auth.php");
                         // database is now selected and connected - index is $conn
 
-                    
                         //add the item to the db
                         $name = $_GET["name"];
                         $description = $_GET["description"];
@@ -49,13 +48,15 @@
 
                         if(mysql_query($itemquery, $conn))
                         {
+                                echo "</form>";
                                 echo "Item successfully added to the database";
-                                echo "<br><a href='view-items.php'>View items</a>";
+                                echo "<br><br>";
+                                include("view-items-category-form.php");
                         }
                         else
                         {
                                 echo "Error, item was not added";
-                                echo "<input type='submit' value = 'Go Back'/>";
+                                echo "<input type='submit' value = 'Go Back'/></form>";
                         }
 
 
