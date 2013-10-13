@@ -16,16 +16,16 @@
                 </h1>
                 <hr>
                 <?php
-                        $cat_query = "SELECT cat_id, cat_name FROM category;";
+                        $cat_query = "SELECT cat_id, cat_name FROM category ORDER BY cat_name;";
                         $cat_list = mysql_query($cat_query, $conn) or die(mysql_error());
-                        
+
                         while($cat_row = mysql_fetch_array($cat_list))
                         {
                                 $cat_id = $cat_row["cat_id"];
                                 $cat_name = $cat_row["cat_name"];
                                 echo "<b>$cat_name:</b><BR>";
-                                
-                                $item_query = "SELECT name, quantity FROM item WHERE cat_id = $cat_id;";
+
+                                $item_query = "SELECT name, quantity FROM item WHERE cat_id = $cat_id ORDER BY name;";
                                 $item_list = mysql_query($item_query, $conn) or die(mysql_error());
 
                                 echo "<table border = 0 width = 100%>";

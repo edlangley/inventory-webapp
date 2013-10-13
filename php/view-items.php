@@ -19,10 +19,9 @@
                                 include("view-items-category-form.php");
                                 //find items in selected category to put in table
                                 $item_query = "SELECT id, name, quantity, cat_id FROM item";
-                                if($current_view_cat == 0)
-                                        $item_query.= ";";
-                                else
-                                        $item_query.= " WHERE cat_id = $current_view_cat;";
+                                if($current_view_cat != 0)
+                                        $item_query.= " WHERE cat_id = $current_view_cat";
+                                $item_query.= " ORDER BY cat_id, name;";
                                 $item_list = mysql_query($item_query, $conn) or die(mysql_error());
                                 $num_rows = mysql_num_rows($item_list);
                                 echo "Number of items in this category: $num_rows";
